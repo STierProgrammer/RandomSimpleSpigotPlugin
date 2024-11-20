@@ -1,0 +1,4 @@
+name: SpigotPlugin
+version: '1.0-SNAPSHOT'
+main: me.stierprogrammer.spigotPlugin.SpigotPlugin
+api-version: '1.21'
