@@ -5,7 +5,13 @@ api-version: '1.21'
 commands:
   sethome:
     description: Set your home location.
+    usage: /<command>
   home:
     description: Teleport to your home location.
+    usage: /<command>
   suicide:
     description: Let's you kill yourself.
+    usage: /<command>
+  godmode:
+    description: Gives you god mode
+    usage: /<command>
