@@ -27,6 +27,9 @@ public class HomeCommands implements CommandExecutor {
             ChatColor.ITALIC +
             ChatColor.BOLD + "/home <name>";
 
+    private static final String homesListMessage =
+            ChatColor.GREEN + "Your homes: ";
+
     @Override
     public boolean onCommand(
         @NotNull CommandSender sender,
@@ -69,6 +72,19 @@ public class HomeCommands implements CommandExecutor {
                 }
                 else {
                     player.sendMessage("Home '" + homeName + "' doesn't exist!");
+                }
+
+                return true;
+            }
+
+            if (command.getName().equalsIgnoreCase("homes")) {
+                HashMap<String, Location> homes = playerHomes.get(player.getUniqueId());
+
+                if (homes != null && !homes.isEmpty()) {
+                    player.sendMessage(homesListMessage + String.join(", ", homes.keySet()));
+                }
+                else {
+                    player.sendMessage(ChatColor.RED + "You have no homes set!");
                 }
 
                 return true;

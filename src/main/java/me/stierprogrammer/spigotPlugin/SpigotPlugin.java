@@ -3,27 +3,28 @@ package me.stierprogrammer.spigotPlugin;
 import me.stierprogrammer.spigotPlugin.Commands.GodModeCommand;
 import me.stierprogrammer.spigotPlugin.Commands.HomeCommands;
 import me.stierprogrammer.spigotPlugin.Commands.SuicideCommand;
-import me.stierprogrammer.spigotPlugin.listeners.BedListener;
-import me.stierprogrammer.spigotPlugin.listeners.PlayerListener;
-import me.stierprogrammer.spigotPlugin.listeners.SheepListener;
-import me.stierprogrammer.spigotPlugin.listeners.XPBottleListener;
+import me.stierprogrammer.spigotPlugin.Listeners.EnterLeaveBedListener;
+import me.stierprogrammer.spigotPlugin.Listeners.JoinLeavePlayerListener;
+import me.stierprogrammer.spigotPlugin.Listeners.SheepShearListener;
+import me.stierprogrammer.spigotPlugin.Listeners.XPBottleBreakListener;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.HashMap;
 import java.util.Objects;
 
 public final class SpigotPlugin extends JavaPlugin implements Listener {
     PluginManager pm = getServer().getPluginManager();
-    BedListener bedListener = new BedListener();
-    PlayerListener playerListener = new PlayerListener();
-    XPBottleListener xpListenerBottle = new XPBottleListener();
-    SheepListener shearSheepListener = new SheepListener();
-    GodModeCommand godmodeCommand = new GodModeCommand();
+
+    final String[] homeCommandsList = {"home", "sethome", "homes"};
     HomeCommands homeCommands = new HomeCommands();
-    final String[] homeCommandsList = {"home", "sethome"};
+    GodModeCommand godmodeCommand = new GodModeCommand();
     SuicideCommand suicideCommand = new SuicideCommand();
+
+    EnterLeaveBedListener enterLeaveBedListener = new EnterLeaveBedListener();
+    JoinLeavePlayerListener joinLeavePlayerListener = new JoinLeavePlayerListener();
+    XPBottleBreakListener xpBottleBreakListener = new XPBottleBreakListener();
+    SheepShearListener sheepShearListener = new SheepShearListener();
 
     @Override
     public void onEnable() {
@@ -36,9 +37,9 @@ public final class SpigotPlugin extends JavaPlugin implements Listener {
         Objects.requireNonNull(getCommand("godmode")).setExecutor(godmodeCommand);
         Objects.requireNonNull(getCommand("suicide")).setExecutor(suicideCommand);
 
-        pm.registerEvents(bedListener, this);
-        pm.registerEvents(playerListener, this);
-        pm.registerEvents(xpListenerBottle, this);
-        pm.registerEvents(shearSheepListener, this);
+        pm.registerEvents(enterLeaveBedListener, this);
+        pm.registerEvents(joinLeavePlayerListener, this);
+        pm.registerEvents(xpBottleBreakListener, this);
+        pm.registerEvents(sheepShearListener, this);
     }
 }

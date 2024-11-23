@@ -1,4 +1,4 @@
-package me.stierprogrammer.spigotPlugin.listeners;
+package me.stierprogrammer.spigotPlugin.Listeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerBedLeaveEvent;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class BedListener implements Listener {
+public class EnterLeaveBedListener implements Listener {
     private final HashMap<UUID, Long> cooldowns = new HashMap<>();
     private static final long COOLDOWN_TIME = 10 * 60 * 1000;
 

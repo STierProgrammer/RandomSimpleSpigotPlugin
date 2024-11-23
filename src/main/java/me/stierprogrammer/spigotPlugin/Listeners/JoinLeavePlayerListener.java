@@ -1,4 +1,4 @@
-package me.stierprogrammer.spigotPlugin.listeners;
+package me.stierprogrammer.spigotPlugin.Listeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class PlayerListener implements Listener {
+public class JoinLeavePlayerListener implements Listener {
     @EventHandler
     public void whenPlayerJoins(PlayerJoinEvent event) {
         Player player = event.getPlayer();

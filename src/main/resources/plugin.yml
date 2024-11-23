@@ -9,6 +9,9 @@ commands:
   home:
     description: Teleport to your home location.
     usage: /<command>
+  homes:
+    description: Shows all of your home locations.
+    usage: /<command>
   suicide:
     description: Let's you kill yourself.
     usage: /<command>

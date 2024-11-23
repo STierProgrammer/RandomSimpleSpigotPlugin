@@ -1,4 +1,4 @@
-package me.stierprogrammer.spigotPlugin.listeners;
+package me.stierprogrammer.spigotPlugin.Listeners;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -7,7 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerShearEntityEvent;
 
-public class SheepListener implements Listener {
+public class SheepShearListener implements Listener {
     @EventHandler
     public void onShear(PlayerShearEntityEvent event) {
         Player player = event.getPlayer();
