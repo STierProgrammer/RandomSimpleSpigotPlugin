@@ -1,5 +1,6 @@
 package me.stierprogrammer.spigotPlugin.Commands;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -12,6 +13,9 @@ import java.util.UUID;
 
 public class Commands implements CommandExecutor {
     private final HashMap<UUID, HashMap<String, Location>> playerHomes = new HashMap<>();
+    private static final String setHomeUsageMessage = ChatColor.RED + "" + ChatColor.BOLD + "Usage: " + ChatColor.GREEN + ChatColor.ITALIC + ChatColor.BOLD + "/sethome <name>";
+    private static final String homeUsageMessage = ChatColor.RED + "" + ChatColor.BOLD + "Usage: " + ChatColor.GREEN + ChatColor.ITALIC + ChatColor.BOLD + "/home <name>";
+    private static final String suicideMessage = ChatColor.RED + "" + ChatColor.BOLD + "You have killed yourself!";
 
     @Override
     public boolean onCommand(
@@ -28,7 +32,7 @@ public class Commands implements CommandExecutor {
 
         if (command.getName().equalsIgnoreCase("sethome")) {
             if (args.length < 1) {
-                player.sendMessage("Usage: /sethome <name>");
+                player.sendMessage(setHomeUsageMessage);
 
                 return false;
             }
@@ -42,9 +46,10 @@ public class Commands implements CommandExecutor {
 
             return true;
         }
+
         else if (command.getName().equalsIgnoreCase("home")) {
             if (args.length < 1) {
-                player.sendMessage("Usage: /home <name>");
+                player.sendMessage(homeUsageMessage);
 
                 return false;
             }
@@ -62,6 +67,12 @@ public class Commands implements CommandExecutor {
             }
 
             return true;
+        }
+
+        else if (command.getName().equalsIgnoreCase("suicide")) {
+            player.setHealth(0.0);
+
+            player.sendMessage(suicideMessage);
         }
 
         return false;

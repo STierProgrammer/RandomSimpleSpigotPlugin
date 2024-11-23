@@ -7,3 +7,5 @@ commands:
     description: Set your home location.
   home:
     description: Teleport to your home location.
+  suicide:
+    description: Let's you kill yourself.

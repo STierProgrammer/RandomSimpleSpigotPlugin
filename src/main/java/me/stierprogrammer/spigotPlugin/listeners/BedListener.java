@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerBedLeaveEvent;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class BedListenerClass implements Listener {
+public class BedListener implements Listener {
     private final HashMap<UUID, Long> cooldowns = new HashMap<>();
     private static final long COOLDOWN_TIME = 10 * 60 * 1000;
 
@@ -40,12 +40,12 @@ public class BedListenerClass implements Listener {
     @EventHandler
     public void onLeaveBed(PlayerBedLeaveEvent event) {
         Player player = event.getPlayer();
-        String message = ChatColor.AQUA + "You have survived!";
+        String message = ChatColor.AQUA + "" + ChatColor.BOLD + "You have survived!";
 
-        if (player.getExp() >= 40) {
+        if (player.getTotalExperience() >= 50) {
             player.sendMessage(message);
         }
-        else {
+        else if (player.getTotalExperience() < 50) {
             player.setHealth(0);
         }
     }
