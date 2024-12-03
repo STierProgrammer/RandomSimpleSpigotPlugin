@@ -5,16 +5,52 @@ api-version: '1.21'
 commands:
   sethome:
     description: Set your home location.
+    permission: permissions.homeCommands
+    permission-message: You can not use this command!
     usage: /<command>
   home:
     description: Teleport to your home location.
+    permission: permissions.homeCommands
+    permission-message: You can not use this command
     usage: /<command>
   homes:
     description: Shows all of your home locations.
+    permission: permissions.homeCommands
+    permission-message: You can not use this command!
     usage: /<command>
   suicide:
     description: Let's you kill yourself.
+    permission: permissions.suicide
+    permission-message: You can not use this command!
     usage: /<command>
   godmode:
     description: Gives you god mode
+    permission: permissions.godmode
+    permission-message: You can not use this command!
     usage: /<command>
+  feed:
+    description: Feeds you
+    usage: /<command>
+  explosion:
+    description: Boom!
+    usage: /<command>
+  perm:
+    description: Perm?
+    usage: /<command>
+    permission: permissions.perms
+    permission-message: You can not use this command!
+permissions:
+  permissions.godmode:
+    description: Allows to run /godmode command
+    default: op
+    children:
+      permissions.suicide: false
+  permissions.suicide:
+    description: Allows to run /suicide command
+    default: not op
+  permissions.homeCommands:
+    description: Allows to run /sethome, /home and /homes commands
+    default: not op
+  permissions.perms:
+    description: Allows to run /perm command
+    default: not op

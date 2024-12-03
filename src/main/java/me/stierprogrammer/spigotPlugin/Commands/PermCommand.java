@@ -7,10 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class GodModeCommand implements CommandExecutor {
-    private final String activatedMessage = ChatColor.RED + "" + ChatColor.BOLD + "God mode has been activated!\n";
-    private final String disabledMessage = ChatColor.RED + "" + ChatColor.BOLD + "God mode has been disabled!\n";
-
+public class PermCommand implements CommandExecutor {
     @Override
     public boolean onCommand(
             @NotNull CommandSender sender,
@@ -19,23 +16,18 @@ public class GodModeCommand implements CommandExecutor {
             @NotNull String[] args
     ) {
         if (!(sender instanceof Player player)) {
-            sender.sendMessage("Only players can use this command!");
+            sender.sendMessage(ChatColor.RED + "Only players can use this command.");
 
             return true;
         }
 
-        if (player.isInvulnerable()) {
-            player.setInvulnerable(false);
-            player.sendMessage(disabledMessage);
+        if (player.hasPermission("permissions.perms")) {
+            player.sendMessage(ChatColor.GREEN + "You have permission to use this command.");
         }
-
         else {
-            player.setInvulnerable(true);
-            player.sendMessage(activatedMessage);
-        }
+            player.sendMessage(ChatColor.RED + "You don't have permission to use this command.");
 
+        }
         return true;
     }
-
 }
-
