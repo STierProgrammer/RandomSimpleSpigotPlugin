@@ -39,6 +39,9 @@ commands:
     usage: /<command>
     permission: permissions.perms
     permission-message: You can not use this command!
+  repeat:
+    description: Repeats your message back to you!
+    usage: /<command> <message>
 permissions:
   permissions.godmode:
     description: Allows to run /godmode command

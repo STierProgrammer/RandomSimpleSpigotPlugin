@@ -19,6 +19,7 @@ public final class SpigotPlugin extends JavaPlugin implements Listener {
     FeedCommand feedCommand = new FeedCommand();
     ExplosionCommand explosionCommand = new ExplosionCommand();
     PermCommand permCommand = new PermCommand();
+    RepeatCommand repeatCommand = new RepeatCommand();
 
     EnterLeaveBedListener enterLeaveBedListener = new EnterLeaveBedListener();
     JoinLeavePlayerListener joinLeavePlayerListener = new JoinLeavePlayerListener();
@@ -42,6 +43,7 @@ public final class SpigotPlugin extends JavaPlugin implements Listener {
         Objects.requireNonNull(getCommand("feed")).setExecutor(feedCommand);
         Objects.requireNonNull(getCommand("explosion")).setExecutor(explosionCommand);
         Objects.requireNonNull(getCommand("perm")).setExecutor(permCommand);
+        Objects.requireNonNull(getCommand("repeat")).setExecutor(repeatCommand);
 
         pm.registerEvents(enterLeaveBedListener, this);
         pm.registerEvents(joinLeavePlayerListener, this);
